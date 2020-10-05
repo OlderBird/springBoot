@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>成功页面</title>
+</head>
+<body>
+    <h1>成功</h1>
+    <!--th:text 将div里面的内容设置为-->
+    <div th:text="${hello}">这是显示欢迎信息</div><br>
+    替换文档：<div id="test" th:id="${change}" th:text="${hello}">我已经被替换了</div><br>
+    遍历效果1：<div th:text="${user}" th:each="user:${users}"></div><br>
+    遍历效果2：<span th:each="user:${users}">[[${user}]]</span>
+</body>
+</html>
