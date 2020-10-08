@@ -9,11 +9,15 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+/**使用 WebMvcConfigurer 可以来扩展 SpringMVC 的功能
+ * @EnableWebMvc：不要接管 SpringMVC*/
+
 @Configuration
-public class MvcConfig implements WebMvcConfigurer {
+public class MvcConfig implements WebMvcConfigurer{
 
     @Bean
     public WebMvcConfigurer webMvcConfigurer() {
+
 //        页面的重定向
         WebMvcConfigurer webMvcConfigurer = new WebMvcConfigurer() {
             @Override

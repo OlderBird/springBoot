@@ -12,6 +12,7 @@ import java.util.Map;
 @Controller
 public class HelloController {
 
+    //    测试“用户不存在异常” hello?user=aaa
     @ResponseBody
     @RequestMapping("/hello")
     public String hello(@RequestParam("user") String user){
@@ -34,5 +35,7 @@ public class HelloController {
     public String login(){
         return "login";
     }
+
+
 
 }
