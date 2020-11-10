@@ -19,11 +19,4 @@ public class MyServerConfig {
      }
      */
 
-//    注册三大组件：
-//    【Servlet：ServletRegistrationBean】
-//    【Filter：FilterRegistrationBean】
-//    【Listener:ServletListenerRegistrationBean】
-/**   由于 SpringBoot 默认是以 jar 包的方式启动嵌入式的 Servlet 容器来启动 SpringBoot 的 Web 应用，没有 web.xml文件
-      所以注册组件用以下三种方式*/
-
 }

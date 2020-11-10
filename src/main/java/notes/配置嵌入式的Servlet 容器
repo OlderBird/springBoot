@@ -1,0 +1,37 @@
+TomCat 就是一个 Servlet 容器
+SpringBoot 默认使用的是嵌入式的 Servlet容器（TomCat）
+
+问题？
+1、如何定制和修改 Servlet 容器的相关配置
+    1）、SpringBoot 能不能支持其他的 Servlet容器
+        修改和 server 有关的配置
+            server.port=8081    //这样就会从 8081 端口启动
+            server.context.path=/crud
+
+            //通用的 Servlet 容器设置
+            server.XXX
+            //TomCat的设置
+            server.tomcat.XXX
+
+   2）、编写一个 EmbeddedServletContainerCustomizer：嵌入式的Servlet容器的定制器
+        //在Spring Boot2.0以上配置嵌入式Servlet容器时EmbeddedServletContainerCustomizer类被WebServerFactoryCustomizer替代
+        -MvcConfig
+
+SpringBoot 能不能支持其他的 Servlet 容器？
+2、注册 Servlet 三大组件【Servlet、Filter、Listener】
+
+注册三大组件：
+    【Servlet：ServletRegistrationBean】
+    【Filter：FilterRegistrationBean】
+    【Listener:ServletListenerRegistrationBean】
+
+由于 SpringBoot 默认是以 jar 包的方式启动嵌入式的 Servlet 容器来启动 SpringBoot 的 Web 应用，没有 web.xml 文件
+注册三大组件用以下方式
+    //    注册三大组件：看 MyServerConfig
+
+    SpringBoot 帮我们自动配置 SpringMVC 的时候，自动注册了 SpringMVC 的前端控制器：DispatcherServlet
+
+3、SpringBoot 还有其他的 Servlet 容器：Jetty（长连接）、Undertow（不支持 JSP）
+
+
+工作原理：

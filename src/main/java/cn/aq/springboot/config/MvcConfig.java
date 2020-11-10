@@ -2,6 +2,9 @@ package cn.aq.springboot.config;
 
 import cn.aq.springboot.component.LoginHandlerInterceptor;
 import cn.aq.springboot.component.MyLocaleResolver;
+import org.springframework.boot.web.embedded.jetty.ConfigurableJettyWebServerFactory;
+import org.springframework.boot.web.server.ConfigurableWebServerFactory;
+import org.springframework.boot.web.server.WebServerFactoryCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.LocaleResolver;
@@ -14,6 +17,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 public class MvcConfig implements WebMvcConfigurer{
+
+
+
 
     @Bean
     public WebMvcConfigurer webMvcConfigurer() {
