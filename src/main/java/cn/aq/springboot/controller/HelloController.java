@@ -1,5 +1,6 @@
 package cn.aq.springboot.controller;
 
+import cn.aq.springboot.bean.Employee;
 import cn.aq.springboot.exception.UserNotExistException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,7 +36,5 @@ public class HelloController {
     public String login(){
         return "login";
     }
-
-
 
 }

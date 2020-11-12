@@ -12,7 +12,7 @@ import java.util.Map;
 @Component
 public class MyErrorAttributes extends DefaultErrorAttributes {
 
-//    返回值的map就是页面和jsoon能获取的所有字段
+//    返回值的map就是页面和json能获取的所有字段
     @Override
     public Map<String, Object> getErrorAttributes(WebRequest webRequest, ErrorAttributeOptions options) {
         Map<String, Object> map = super.getErrorAttributes(webRequest, options);

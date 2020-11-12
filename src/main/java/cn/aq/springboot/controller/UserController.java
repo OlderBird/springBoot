@@ -4,14 +4,11 @@ import cn.aq.springboot.bean.Department;
 import cn.aq.springboot.bean.Employee;
 import cn.aq.springboot.dao.DepartmentDao;
 import cn.aq.springboot.dao.EmployeeDao;
-import cn.aq.springboot.exception.UserNotExistException;
+import cn.aq.springboot.dao.GoDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 
@@ -23,6 +20,9 @@ public class UserController {
 
     @Autowired
     DepartmentDao departmentDao;
+
+    @Autowired
+    GoDao goDao;
 
 //    员工列表页面
     @GetMapping("/emps")
@@ -77,6 +77,13 @@ public class UserController {
             throw new UserNotExistException();
         }*/
         return "redirect:/emps";
+    }
+
+    @ResponseBody
+    @GetMapping("/gogogo")
+    public Employee employee() {
+        System.out.println(goDao.getEmp());
+        return goDao.getEmp();
     }
 
 

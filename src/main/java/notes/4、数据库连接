@@ -1,0 +1,44 @@
+一、简介
+    对于数据访问层，无论是 SQL 还是 NOSQL，SpringBoot 默认采用整合 Spring Data 的方式进行统一处理，添加大量自动配置，屏蔽了很多设置。
+    引入各种 xxxTemplate、xxxRepository 来简化我们对数据访问层的操作。对我们来说只要进行简单的设置即可。
+    -JDBC
+    -MyBatis
+    -JPA
+
+二、整合基本 JDBC 与数据源
+    1、引入 starter
+        -spring-boot-starter-jdbc
+        -mysql-connector-java
+
+    2、配置 application.yml
+        spring:
+            dataSource:
+                username:
+                password:
+                url:
+                driver-class-name:
+        效果：
+            默认是用 org.apache.tomcat.jdbc.pool.Datasource 作为数据源
+            数据源的相关配置都在 DataSourceProperties 里面
+        自动配置原理：
+            在 org.springframework.boot.autoconfigure.jdbc 包下
+                1、参考 DataSourceConfiguration，根据配置创建数据源，默认使用 Tomcat 连接池
+    3、测试
+
+Druid 是一个由阿里开源的数据库连接池，Druid 配置非常丰富，但是设置不当会对生产环境造成严重影响。
+    4、高级配置：使用 druid 数据源
+        -引入 druid
+        -配置属性
+            但是这些 数据源属性 并不能生效，我们需要自己配一下
+    5、配置 druid 数据源监控
+
+
+三、整合 Mybatis
+    步骤：
+        1、引入 mybatis-starter
+            -mybatis-spring-boot-starter
+        2、配置数据源相关属性（使用 druid 数据源）
+        3、给数据库建表
+        4、创建 javaBean
+
+

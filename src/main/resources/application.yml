@@ -1,0 +1,50 @@
+spring:
+  datasource:
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/springboot?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC
+#    数据源的其他配置
+    type: com.alibaba.druid.pool.DruidDataSource
+
+#    初始连接数，就是线程池一旦被创建，里面有多少个数据库连接！
+    initiaSize: 0
+#    最小空闲
+    minIdle: 1
+#    最大空间
+    maxIdle: 20
+#    最大连接数
+    maxActive: 20
+#    最长等待时间
+    maxWait: 60000
+#    作为 DestroyTask执行的时间周期。DestroyTask 主要作用在两处地方
+#    ·判断连接池的连接空闲是否大于 mindle，如果是则关闭多余的连接，反之则新增连接
+#    ·回收连接池泄漏的连接
+    timeBetweenEvictionRunsMillis: 60000
+#    连接保持空闲而不被驱逐的最小时间
+    minEvictableIdleTimeMillis: 30000
+#    用来检查连接是否有效的 SQL，要求是一个查询语句，常用 SELECT 'x'
+#    如果 validationQuery 为 null，testOnBorrow、testOnReturn、testWhileIdle 都不会起作用
+    validationQuery: SELECT 1 FROM DUAL
+#    false：建议配置为 true，不影响性能，并且保证安全性。申请连接的时候检测
+#    如果空闲时间大于 timeBetweenEvictionRunsMills,执行 validationQuery 检测
+    testWhileIdle: true
+#    申请连接时执行 validationQuery 检测连接是否有效,做了这个配置会降低性能
+    testOnBorrow: false
+#    归还连接时执行 validationQuery 检测连接是否有效,做了这个配置会降低性能
+    testOnReturn: false
+#    是否缓存 preparedStatement,也就是 PSCache，PSCache 对支持游标的数据库性能提升巨大，比如说 oracle，在 mysql 下建议关闭
+    poolPreparedStatements: false
+
+#    配置监控统计拦截的 filters：去掉后监控界面 sql 无法统计，‘wall’用于防火墙
+    filters: stat,wall,log4j
+    maxPoolPreparedStatementPerConectionSize: 20
+    useGlobalDateSourceStat: true
+    connectionProperties: druid.stat.merSql=true;druid.stat.slowSqlMills=500
+
+#    Mybatis 的相关配置
+mybatis:
+#  全局配置文件的位置
+  config-location: classpath:mybatis/mybatis-config.xml
+#  SQL映射文件位置
+  mapper-locations: classpath:mybatis/mapper/*.xml
